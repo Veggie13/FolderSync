@@ -1,0 +1,13 @@
+HKCR
+{
+  NoRemove Folder
+  {
+    NoRemove ShellEx
+    {
+      NoRemove ContextMenuHandlers
+      {
+        ForceRemove FolderSync = s '{5EE2C662-E0CE-417B-AE79-37DCC26E340B}'
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+// FolderSync.idl : IDL source for FolderSync
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (FolderSync.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(FA06A8B6-E707-4C57-B327-0AC85777D62E),
+	pointer_default(unique)
+]
+interface IShellExt : IUnknown{
+};
+[
+	uuid(B4C13727-1E28-40C1-82FF-66E3644C9829)
+]
+library FolderSyncLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(5EE2C662-E0CE-417B-AE79-37DCC26E340B)		
+	]
+	coclass ShellExt
+	{
+		[default] interface IShellExt;
+	};
+};
+
