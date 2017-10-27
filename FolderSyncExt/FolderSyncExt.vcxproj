@@ -231,7 +231,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="FolderSelectDlg.cpp" />
     <ClCompile Include="FolderSync.cpp" />
     <ClCompile Include="FolderSync_i.c">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
@@ -247,7 +246,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="RootShellTreeCtrl.cpp" />
     <ClCompile Include="ShellExt.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -258,10 +256,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dllmain.h" />
-    <ClInclude Include="FolderSelectDlg.h" />
     <ClInclude Include="FolderSync_i.h" />
     <ClInclude Include="Resource.h" />
-    <ClInclude Include="RootShellTreeCtrl.h" />
     <ClInclude Include="ShellExt.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />

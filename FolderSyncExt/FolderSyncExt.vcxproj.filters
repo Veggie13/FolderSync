@@ -31,12 +31,6 @@
     <ClCompile Include="FolderSync_i.c">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="FolderSelectDlg.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RootShellTreeCtrl.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ShellExt.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -56,12 +50,6 @@
     </ClInclude>
     <ClInclude Include="FolderSync_i.h">
       <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RootShellTreeCtrl.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FolderSelectDlg.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ShellExt.h">
       <Filter>Header Files</Filter>

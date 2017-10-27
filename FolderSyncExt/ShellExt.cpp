@@ -3,7 +3,6 @@
 #include "stdafx.h"
 #include "ShellExt.h"
 #include <atlconv.h>  // for ATL string conversion macros
-#include "FolderSelectDlg.h"
 
 
 // CShellExt
@@ -113,10 +112,6 @@ HRESULT CShellExt::InvokeCommand(
 	{
 	case 0:
 	{
-		CWnd parent;
-		parent.Attach(pCmdInfo->hwnd);
-		FolderSelectDlg dlg(&parent);
-		dlg.DoModal();
 
 		return S_OK;
 	}
