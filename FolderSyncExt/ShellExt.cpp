@@ -112,7 +112,33 @@ HRESULT CShellExt::InvokeCommand(
 	{
 	case 0:
 	{
+#ifdef DEBUG
+		AfxMessageBox(_T("FolderSync Debug"));
+#endif
+		HKEY folderSyncRegKey;
+		if (ERROR_SUCCESS != RegOpenKeyEx(HKEY_LOCAL_MACHINE, _T("SOFTWARE\\Veggie13\\FolderSync"), 0, KEY_READ | KEY_WOW64_64KEY, &folderSyncRegKey))
+		{
+			AfxMessageBox(_T("FolderSync is not installed."));
+			return S_OK;
+		}
 
+		CString folderSyncPath;
+		DWORD maxPathStrLen = MAX_PATH * sizeof(TCHAR);
+		LSTATUS result = RegQueryValueEx(folderSyncRegKey, _T("InstallDir"), NULL, NULL, (LPBYTE)folderSyncPath.GetBuffer(MAX_PATH), &maxPathStrLen);
+		RegCloseKey(folderSyncRegKey);
+		folderSyncPath.ReleaseBuffer();
+		if (ERROR_SUCCESS != result)
+		{
+			AfxMessageBox(_T("FolderSync has no InstallDir property."));
+			return S_OK;
+		}
+
+		CString folderSyncExe = folderSyncPath + _T("\\FolderSync.exe");
+
+		CString params;
+		params.Format(_T("\"%s\""), m_szFile);
+
+		ShellExecute(pCmdInfo->hwnd, NULL, folderSyncExe, params, NULL, SW_SHOWNORMAL);
 		return S_OK;
 	}
 	break;

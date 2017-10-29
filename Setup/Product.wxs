@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <!-- 73058674-7627-4492-8803-7963339ed29d -->
+  <Product Id="*" Name="$(var.ProductName)" Language="1033" Version="1.0.0.0" Manufacturer="$(var.Manufacturer)" UpgradeCode="50a809b7-7212-4c11-9c2e-d3fb1c32428f" >
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" Platform="x64" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate />
+
+		<Feature Id="ProductFeature" Title="$(var.ProductName)" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+		</Feature>
+
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFiles64Folder">
+        <Directory Id="ManufacturerFolder" Name="$(var.Manufacturer)">
+          <Directory Id="INSTALLFOLDER" Name="$(var.ProductName)" />
+        </Directory>
+      </Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+      <Component Id="FolderSyncComponent" Win64="yes">
+        <File Id="FolderSync" Source="$(var.FolderSync.TargetPath)" ProcessorArchitecture="msil" />
+      </Component>
+      <Component Id="JsonComponent" Win64="yes">
+        <File Id="Json" Source="$(var.FolderSync.TargetDir)Newtonsoft.Json.dll" ProcessorArchitecture="msil" />
+      </Component>
+      <Component Id="FolderSyncExtComponent" Win64="yes">
+        <File Id="FolderSyncExt" Source="$(var.FolderSyncExt.TargetPath)" ProcessorArchitecture="x64">
+          <Class Id="{5EE2C662-E0CE-417B-AE79-37DCC26E340B}" Context="InprocServer32" Description="FolderSync ShellExt Class" ThreadingModel="apartment" Version="1.0" />
+        </File>
+        <RegistryValue Root="HKCR" Key="Folder\ShellEx\ContextMenuHandlers\FolderSync" Value="{5EE2C662-E0CE-417B-AE79-37DCC26E340B}" Type="string" Action="write" />
+      </Component>
+      <Component Id="Registry" Win64="yes">
+        <RegistryKey Root="HKLM" Key="Software\$(var.Manufacturer)\$(var.ProductName)" Action="createAndRemoveOnUninstall">
+          <RegistryValue Type="integer" Name="FolderSyncInstalled" Value="1" KeyPath="yes" />
+          <RegistryValue Type="string" Name="InstallDir" Value="[INSTALLFOLDER]" />
+        </RegistryKey>
+      </Component>
+		</ComponentGroup>
+	</Fragment>
+</Wix>

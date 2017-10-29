@@ -18,8 +18,14 @@ namespace FolderSync
         [STAThread]
         static void Main(string[] args)
         {
+#if DEBUG
+            MessageBox.Show("FolderSync Debug");
+#endif
             if (args.Length < 1)
             {
+#if DEBUG
+                MessageBox.Show("Argument required.");
+#endif
                 return;
             }
 
